@@ -15,8 +15,7 @@ public class LPPool extends LPTokenWrapper implements Contract {
 
     public Address LPToken;
 
-//    public static long DURATION = 86400 * 20;
-    public static long DURATION = 60 * 10;
+    public static long DURATION = 86400 * 20;
     public static long startTime = 0;
 
     public long periodFinish = 0;
