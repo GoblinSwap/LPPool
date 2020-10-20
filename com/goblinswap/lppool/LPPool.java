@@ -15,7 +15,8 @@ public class LPPool extends LPTokenWrapper implements Contract {
 
     public Address LPToken;
 
-    public static long DURATION = 86400 * 20;
+//    public static long DURATION = 86400 * 20;
+    public static long DURATION = 60 * 10;
     public static long startTime = 0;
 
     public long periodFinish = 0;
@@ -161,8 +162,10 @@ public class LPPool extends LPTokenWrapper implements Contract {
             rewards.put(Msg.sender(), BigInteger.ZERO);
             String[][] a = new String[][]{new String[]{Msg.sender().toString()}, new String[]{trueReward.toString()}};
             iToken.call("mint", null, a, null);
+            rewardPerTokenStored = rewardPerToken();
+            lastUpdateTime = lastTimeRewardApplicable();
+            userRewardPerTokenPaid.put(Msg.sender(), rewardPerTokenStored);
             emit(new RewardPaid(Msg.sender(), trueReward));
-            updateReward(null);
         }
 
     }
