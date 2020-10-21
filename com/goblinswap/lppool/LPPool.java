@@ -219,6 +219,7 @@ public class LPPool extends LPTokenWrapper implements Contract {
 
             if ( Block.timestamp() > startTime && userAcceleration.get(account) != null && userAcceleration.get(account).compareTo(acceleration) != 0 ) {
                 rewardPerTokenStored = rewardPerToken();
+                lastUpdateTime = lastTimeRewardApplicable();
                 if (account != null) {
                     rewards.put(account, _earned(account));
                     userRewardPerTokenPaid.put(account, rewardPerTokenStored);
